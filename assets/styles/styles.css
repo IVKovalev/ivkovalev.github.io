@@ -85,11 +85,11 @@ meter {
 
 body {
     font-family: 'Roboto', sans-serif;
-    color: #0CACB4; /* #333131 */
+    color: #333131; /* #0CACB4 - бирюзовый цвет из CV */
 }
 
 a {
-    color: black;
+    color: #0CACB4; /* black */
     font-weight: 600;
 }
 
