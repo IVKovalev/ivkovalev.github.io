@@ -141,8 +141,9 @@ a:hover {
 }
 
 .content__name a {
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.03em;
+    margin-bottom: 20px; /* Отступ снизу */
 }
 
 .content__description {
