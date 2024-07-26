@@ -268,3 +268,8 @@ a:hover {
     height: 22px;
     margin-right: 4px;
 }
+.small-text {
+    font-size: 0.8em; /* Изменить значение, чтобы получить нужный размер шрифта */
+    display: block;
+    margin-top: 10px; /* Опционально, добавить отступ сверху */
+}
