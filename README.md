@@ -36,5 +36,5 @@ The portfolio consists of the following blocks and subsections:
 - Regression
 - Neural networks.
 
-> Для ознакомления с портфолио перейдите по ссылке: `https://ivkovalev.github.io/`
+> Для ознакомления с портфолио перейдите по ссылке: [`https://ivkovalev.github.io/`](https://ivkovalev.github.io/)
 
