@@ -199,7 +199,9 @@ a:hover {
 .content__main-item {
     display: flex;
     line-height: 1.8rem;
-    margin-bottom: 1.8rem;    
+    margin-bottom: 1.8rem;
+    border-bottom: 1px solid #ccc; /* тонкая серая линия */
+    padding-bottom: 15px; /* отступ снизу для линии */
 }
 .content__main-item.project img {
     max-width: 300px;
