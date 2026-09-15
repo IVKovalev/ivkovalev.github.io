@@ -3,7 +3,7 @@
     The new CSS reset - version 1.7.3 (last updated 7.8.2022)
     GitHub page: https://github.com/elad2412/the-new-css-reset
 ***/
-
+ 
 /*
     Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
     - The "symbol *" part is to solve Firefox SVG sprite bug
@@ -12,61 +12,61 @@
     all: unset;
     display: revert;
 }
-
+ 
 /* Preferred box-sizing value */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
-
+ 
 /* Reapply the pointer cursor for anchor tags */
 a, button {
     cursor: revert;
 }
-
+ 
 /* Remove list styles (bullets/numbers) */
 ol, ul, menu {
     list-style: none;
 }
-
+ 
 /* For images to not be able to exceed their container */
 img {
     max-width: 100%;
 }
-
+ 
 /* removes spacing between cells in tables */
 table {
     border-collapse: collapse;
 }
-
+ 
 /* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
 input, textarea {
     -webkit-user-select: auto;
 }
-
+ 
 /* revert the 'white-space' property for textarea elements on Safari */
 textarea {
     white-space: revert;
 }
-
+ 
 /* minimum style to allow to style meter element */
 meter {
     -webkit-appearance: revert;
     appearance: revert;
 }
-
+ 
 /* reset default text opacity of input placeholder */
 ::placeholder {
     color: unset;
 }
-
+ 
 /* fix the feature of 'hidden' attribute.
    display:revert; revert to element instead of attribute */
 :where([hidden]) {
     display: none;
 }
-
+ 
 /* revert for bug in Chromium browsers
    - fix for the content editable attribute will work properly.
    - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
@@ -77,204 +77,275 @@ meter {
     -webkit-line-break: after-white-space;
     -webkit-user-select: auto;
 }
-
+ 
 /* apply back the draggable feature - exist only in Chromium and Safari */
 :where([draggable="true"]) {
     -webkit-user-drag: element;
 }
-
+ 
+/* ============================================================
+   Палитра. Одно место, где задаётся цвет — светлая и тёмная тема
+   переопределяют одни и те же переменные.
+   ============================================================ */
+:root {
+    --accent: #0CACB4;   /* бирюзовый из CV */
+    --text: #333131;
+    --bg: #ffffff;
+    --rule: #dcdcdc;
+}
+ 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --accent: #2ED3DA; /* осветлённый бирюзовый: читается на чёрном */
+        --text: #c8cbcd;
+        --bg: #000000;
+        --rule: #2a2d2f;
+    }
+}
+ 
 body {
     font-family: 'Roboto', sans-serif;
-    color: #333131; /* #0CACB4 - бирюзовый цвет из CV */
+    background-color: var(--bg);
+    color: var(--text);
 }
-
+ 
 a {
-    color: #0CACB4; /* black */
+    color: var(--accent);
     font-weight: 600;
 }
-
+ 
 a:hover {
     text-decoration: underline;
 }
-
+ 
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: black;
-        color: #c8cbcd;
-    }
-
-    a {
-        color: #fff;
-    }
-
     .content__social-item img,
-    .footer__social-item img{
+    .footer__social-item img {
         filter: invert(1);
     }
 }
-
+ 
+/* ============================================================
+   Раскладка
+   ============================================================ */
 .main {
     margin: auto;
-    width: 47.5rem;
+    width: 100%;
+    max-width: 47.5rem;
+    padding: 0 1.25rem 2.5rem;
 }
-
+ 
 .content__hello {
     display: flex;
     margin-top: 4.2rem;
     margin-bottom: 5rem;
-    font-size: 30px;
-    line-height: 2.8rem;
+    font-size: 1.875rem;
+    line-height: 1.35;
 }
-
+ 
 .content__hello-img {
     width: 142px;
     height: 142px;
     min-width: 142px;
     border-radius: 50%;
-    border: 3px solid silver;
+    border: 3px solid var(--rule);
 }
-
+ 
 .content__hello-text {
     margin-left: 2.2rem;
-    line-height: 2.7rem;
     margin-top: 5px;
 }
-
+ 
 .content__name a {
     font-weight: 800;
     letter-spacing: 0.03em;
-    margin-bottom: 20px; /* Отступ снизу */
 }
-
+ 
 .content__description {
     font-weight: 700;
     letter-spacing: 0.03em;
 }
-
+ 
+/* ============================================================
+   Переключатель языка
+   ============================================================ */
 .header {
     display: flex;
     justify-content: end;
     margin-top: 0.2rem;
 }
+ 
 .header span {
     margin-left: 3px;
 }
-
+ 
+.header a.is-active {
+    color: var(--text);
+    cursor: default;
+    text-decoration: none;
+}
+ 
+.header a.is-active:hover {
+    text-decoration: none;
+}
+ 
+/* ============================================================
+   Соцсети
+   ============================================================ */
 .content__social {
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
     max-width: 36rem;
-    font-size: 18px;
-    padding-top: 5px;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    flex-direction: row;
-    flex: 1 1 0%;
-    -webkit-box-pack: start;
-    justify-content: space-between;
+    font-size: 1.125rem;
+    padding-top: 1rem;
 }
+ 
 .content__social-item {
     display: flex;
     align-items: center;
-    margin-right: 10px;
 }
+ 
 .content__social-item img {
     width: 22px;
     height: 22px;
     margin-right: 5px;
 }
-
+ 
+/* ============================================================
+   Заголовки: ритм задаётся отступами, а не line-height
+   ============================================================ */
 .content__about-header {
     font-size: 2.4rem;
-    margin-bottom: 1.4rem;
-    line-height: 4rem;
+    line-height: 1.2;
+    margin: 2.5rem 0 1.4rem;
     text-transform: uppercase;
 }
-
+ 
 .content__subheader {
     font-size: 1.4rem;
-    line-height: 4rem;
+    line-height: 1.3;
+    margin: 2.5rem 0 1.2rem;
     text-transform: uppercase;
 }
-
+ 
+/* ============================================================
+   Карточки проектов
+   ============================================================ */
 .content__main-item {
     display: flex;
-    line-height: 1.8rem;
+    gap: 1.25rem;
+    line-height: 1.6;
     margin-bottom: 1.8rem;
-    border-bottom: 1px solid #ccc; /* тонкая серая линия */
-    padding-bottom: 15px; /* отступ снизу для линии */
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 15px;
 }
+ 
 .content__main-item.project img {
     max-width: 300px;
     height: auto;
-    margin-right: 10px;
     border-radius: 25px;
 }
-
+ 
 .main-item__description img {
     border-radius: 25px;
 }
-
+ 
 .project .main-item__title {
-    font-weight: 200;
-    font-size: 18px;
+    font-weight: 500;
+    font-size: 1.125rem;
 }
-
+ 
 .project .main-item__links span {
     margin-right: 4px;
 }
-
+ 
 .project .main-item__description {
-    font-weight: 100;
+    font-weight: 300;
     margin-top: 1rem;
 }
-
+ 
 .project .main-item__subdescription {
-    font-weight: 200;
+    font-weight: 400;
     margin-top: 1rem;
 }
+ 
 .project .main-item__subdescription span {
-    font-weight: 400;
+    font-weight: 600;
 }
-
-.post .main-item__title{
+ 
+.post .main-item__title {
     font-size: 1.48rem;
     line-height: 2rem;
     font-weight: 500;
     letter-spacing: .05rem;
 }
-
-.post .main-item__title a{
+ 
+.post .main-item__title a {
     box-shadow: none;
     letter-spacing: 0.03em;
 }
-
+ 
 .post .main-item__date {
     display: inline-block;
     font-size: .94rem;
     font-weight: 700;
     line-height: 1.55rem;
 }
-
+ 
 .post .main-item__description {
     line-height: 1.8rem;
     margin-top: -0.2rem;
     margin-bottom: 0.8rem;
 }
-
+ 
 .footer {
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
 }
-
+ 
 .footer__social-item img {
     width: 22px;
     height: 22px;
     margin-right: 4px;
 }
+ 
 .small-text {
-    font-size: 0.4em; /* Изменить значение, чтобы получить нужный размер шрифта */
+    font-size: 0.875rem;
+    font-weight: 400;
     display: block;
-    margin-top: 10px; /* Опционально, добавить отступ сверху */
-    margin-bottom: 2px; /* Отступ снизу */
+    margin-top: 10px;
+    margin-bottom: 2px;
 }
+ 
+/* ============================================================
+   Мобильные: всё в одну колонку
+   ============================================================ */
+@media (max-width: 40rem) {
+    .content__hello {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+        font-size: 1.5rem;
+    }
+ 
+    .content__hello-text {
+        margin-left: 0;
+        margin-top: 1.25rem;
+    }
+ 
+    .content__main-item {
+        flex-direction: column;
+    }
+ 
+    .content__main-item.project img {
+        max-width: 100%;
+    }
+ 
+    .content__about-header {
+        font-size: 1.9rem;
+    }
+}
+ 
