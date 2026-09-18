@@ -94,16 +94,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   padding: 0.7rem 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 1rem;
 }
-.monogram {
-  font-weight: 700;
-  font-size: 0.9375rem;
-  letter-spacing: -0.01em;
-  color: var(--text);
-}
-.monogram span { color: var(--accent); }
 .topbar__tools { display: flex; align-items: center; gap: 0.5rem; }
  
 .langswitch {
@@ -165,7 +158,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   width: 160px; height: 160px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid silver;
+  border: 2px solid silver;
   box-shadow: var(--shadow);
   transition: border-color .18s;
 }
@@ -380,7 +373,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
  
 <header class="topbar">
   <div class="topbar__inner">
-    <div class="monogram">Иван Ковалев<span>.</span></div>
     <div class="topbar__tools">
       <nav class="langswitch" aria-label="Язык">
         <a href="/">EN</a>
