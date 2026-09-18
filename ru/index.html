@@ -148,12 +148,26 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   align-items: center;
   padding: 3.5rem 0 2.5rem;
 }
+.hero__avatarlink {
+  display: block;
+  cursor: zoom-in;
+  border-radius: 50%;
+  line-height: 0;
+}
+.hero__avatarlink:hover { text-decoration: none; }
+.hero__avatarlink:hover .hero__avatar { border-color: var(--accent-bright); }
+.hero__avatarlink:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 4px;
+}
+ 
 .hero__avatar {
-  width: 128px; height: 128px;
+  width: 160px; height: 160px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid var(--border);
+  border: 3px solid silver;
   box-shadow: var(--shadow);
+  transition: border-color .18s;
 }
 .hero__eyebrow {
   font-size: 0.875rem;
@@ -355,7 +369,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
     gap: 1.25rem;
     padding: 2.25rem 0 1.5rem;
   }
-  .hero__avatar { width: 92px; height: 92px; }
+  .hero__avatar { width: 116px; height: 116px; }
   .card { grid-template-columns: 1fr; gap: 1rem; padding: 1rem; }
   .card__links { margin-left: 0; width: 100%; }
   .rule { margin: 2rem 0; }
@@ -379,7 +393,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
  
 <div class="wrap">
   <section class="hero">
-    <img class="hero__avatar" src="/assets/img/avatar.png" alt="Иван Ковалев">
+    <a class="hero__avatarlink" data-fslightbox="avatar" href="/assets/img/avatar.png" aria-label="Открыть фото">
+      <img class="hero__avatar" src="/assets/img/avatar.png" alt="Иван Ковалев">
+    </a>
     <div>
       <p class="hero__eyebrow">Аналитик данных</p>
       <h1 class="hero__name">Привет! Меня зовут Иван Ковалев</h1>
