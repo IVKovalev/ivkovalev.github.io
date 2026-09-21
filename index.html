@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IvanKo_Portfolio</title>
+<title>Ivan Kovalev Portfolio</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
  
@@ -14,14 +14,15 @@
   --border: #dde5e7;
   --text: #182023;
   --muted: #54656b;
-  --accent: #0a7b81;        /* текстовый бирюзовый: контраст 4.6:1 на белом */
-  --accent-bright: #0cacb4; /* фирменный бирюзовый: линии, чипы, наведение */
+  --accent: #0a7b81;        /* link teal: 4.6:1 contrast on white */
+  --accent-bright: #0cacb4; /* brand teal: rules, chips, hover */
   --accent-soft: rgba(12, 172, 180, 0.10);
   --shadow: 0 1px 2px rgba(16, 32, 36, .04), 0 8px 24px rgba(16, 32, 36, .06);
   --radius: 14px;
   --font: 'Segoe UI', 'Open Sans', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
+ 
 :root:not([data-theme="light"]) { color-scheme: light; }
  
 @media (prefers-color-scheme: dark) {
@@ -77,8 +78,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   margin: 0 auto;
   padding: 0 1.5rem 5rem;
 }
-
-/* ---------- Шапка ---------- */
+ 
+/* ---------- Top bar ---------- */
 .topbar {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
@@ -131,288 +132,490 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 .themetoggle svg { width: 16px; height: 16px; }
 .themetoggle:hover { color: var(--text); border-color: var(--accent-bright); }
-
-/*<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>IvanKo_Portfolio</title>
-    <link rel="stylesheet" type="text/css" href="/assets/styles/styles.css">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BW159ZQTQH"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());  */
-
-      gtag('config', 'G-BW159ZQTQH');
-    </script>
+ 
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 3.5rem 0 2.5rem;
+}
+.hero__avatarlink {
+  display: block;
+  cursor: zoom-in;
+  border-radius: 50%;
+  line-height: 0;
+}
+.hero__avatarlink:hover { text-decoration: none; }
+.hero__avatarlink:hover .hero__avatar { border-color: var(--accent-bright); }
+.hero__avatarlink:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 4px;
+}
+ 
+.hero__avatar {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid silver;
+  box-shadow: var(--shadow);
+  transition: border-color .18s;
+}
+.hero__eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+.hero__name {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.625rem, 1.15rem + 1.9vw, 2.25rem);
+  line-height: 1.18;
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+}
+.hero__role {
+  margin: 0 0 1.4rem;
+  font-size: 1.0625rem;
+  color: var(--muted);
+}
+ 
+.contacts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem 0.4rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: border-color .15s, background .15s, transform .15s;
+}
+.contact:hover {
+  text-decoration: none;
+  border-color: var(--accent-bright);
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+.contact svg { width: 17px; height: 17px; flex: none; color: var(--muted); }
+.contact:hover svg { color: var(--accent); }
+.contact--cv { border-color: var(--accent-bright); color: var(--accent); }
+ 
+/* ---------- Copy ---------- */
+.prose { max-width: none; }
+.prose p { margin: 0 0 1.1rem; }
+.prose p:last-child { margin-bottom: 0; }
+ 
+.lede {
+  color: var(--text);
+}
+ 
+.rule { height: 1px; background: var(--border); border: 0; margin: 2.75rem 0; }
+ 
+.section-title {
+  margin: 3.5rem 0 0.35rem;
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+ 
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 3rem 0 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.kicker::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+ 
+.section-intro {
+  color: var(--muted);
+  margin: 0 0 2rem;
+}
+ 
+/* ---------- Project cards ---------- */
+.cards { display: grid; gap: 1.25rem; }
+ 
+.card {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: border-color .18s, box-shadow .18s, transform .18s;
+}
+.card:hover {
+  border-color: var(--accent-bright);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+ 
+.card__shotlink {
+  display: block;
+  cursor: zoom-in;
+  border-radius: 10px;
+}
+.card__shotlink:hover { text-decoration: none; }
+.card__shotlink:hover .card__shot { border-color: var(--accent-bright); }
+.card__shotlink:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+}
+ 
+.card__shot {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  background: #fff;
+  padding: 6px;
+  transition: border-color .18s;
+}
+ 
+.card__body { display: flex; flex-direction: column; min-width: 0; }
+ 
+.card__title {
+  margin: 0 0 0.4rem;
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.008em;
+  text-wrap: balance;
+}
+.card__title a { color: var(--text); }
+.card__title a:hover { color: var(--accent); text-decoration: none; }
+ 
+.card__desc {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+ 
+.card__meta { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+ 
+.chip {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.22rem 0.55rem;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  white-space: nowrap;
+}
+ 
+.card__links { display: flex; gap: 1rem; margin-left: auto; font-size: 0.875rem; font-weight: 600; }
+.card__links a { white-space: nowrap; }
+.card__links .secondary { color: var(--muted); }
+.card__links .secondary:hover { color: var(--accent); }
+ 
+/* ---------- Footer ---------- */
+.footer {
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.footer__social { display: flex; gap: 0.35rem; }
+.footer__social a {
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 8px;
+  color: var(--muted);
+}
+.footer__social a:hover { background: var(--accent-soft); color: var(--accent); }
+.footer__social svg { width: 18px; height: 18px; }
+ 
+/* ---------- Narrow screens ---------- */
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 2.25rem 0 1.5rem;
+  }
+  .hero__avatar { width: 116px; height: 116px; }
+  .card { grid-template-columns: 1fr; gap: 1rem; padding: 1rem; }
+  .card__links { margin-left: 0; width: 100%; }
+  .rule { margin: 2rem 0; }
+}
+</style>
 </head>
 <body>
-    <div class="main">
-        <div class="header">
-            <a href="#">
-                <span>EN</span>
-            </a>
-            <span>|</span>
-            <a href="/ru">
-                <span>RU</span>
-            </a>
-        </div>
-        <div class="content">
-            <div class="content__hello">
-                <a data-fslightbox href="assets/img/avatar.png">
-                    <img class="content__hello-img" src="assets/img/avatar.png" alt="Avatar">
-                </a>
-                <div class="content__hello-text">
-                    <span class="content__name">
-                        <a href="/"> Hi, I'm Ivan Kovalev&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-                    </span>
-                    <span class="content__description">
-                        <br/>Data Analyst<br/>
-                        <span class="small-text">
-                            My social media contacts:
-                        </span>
-                    </span>
-                    <nav class="content__social">
-                        <a href="https://www.linkedin.com/in/kovalev-ivan-profile" target="_blank" class="content__social-item">
-                            <img src="assets/img/icons/in.svg" alt="LinkedIn">
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=100006548620369" target="_blank" class="content__social-item">
-                            <img src="assets/img/icons/facebook.svg" alt="Facebook">
-                            <span>Facebook</span>
-                        </a>
-                        <a href="https://t.me/ivannkovalev" target="_blank" class="content__social-item">
-                            <img src="assets/img/icons/telegram.svg" alt="Telegram">
-                            <span>Telegram</span>
-                        </a>
-                        <a href="https://github.com/IVKovalev" target="_blank" class="content__social-item">
-                            <img src="assets/img/icons/github.svg" alt="github">
-                            <span>GitHub</span>
-                        </a>
-                        <a href="cv.pdf" target="_blank" class="content__social-item">
-                            <img src="assets/img/icons/pen.svg" alt="pen">
-                            <span>CV</span>
-                        </a>
-                    </nav>
-                </div>
-            </div>
-            <div class="content__main">
-                <div class="content__main-item">
-                    <div class="main-item__description">
-                        <p>I served in the criminal police and worked with distressed assets in banks, and my passion has always been understanding the nature of things and the dependencies of phenomena on each other. If you like the series "Breaking Bad", have watched Harry Potter or The Lord of the Rings more than twice, and consider "The Last of Us 2" one of the best games of the decade, we're on the same wavelength.</p>
-                        <p>&nbsp;</p>
-                        <p>You can view my <a href="cv.pdf" target="_blank">CV</a> or learn more about my professional path on LinkedIn by clicking on the icon above.</p>
-                    </div>
-                </div>
-                <h1 class="content__about-header">Portfolio</h1>
-                <h2 class="content__subheader">Data analysis</h2>
-                <div class="content__main-item">
-                    <div class="main-item__description">
-                        <p>This section presents examples of data analysis projects I have completed. The projects are focused on exploratory data analysis, statistical analysis and A/B testing, as well as business performance analysis.</p>
-                    </div>
-                </div>
-                <div class="content__main-item project">
-                    <a data-fslightbox href="assets/img/project1.png">
-                        <img src="assets/img/project1.png" alt="project1">
-                    </a>
-                    <div>
-                        <div class="main-item__title">
-                            <a href="https://github.com/IVKovalev/data_analytics/blob/main/1_Market%20Analysis%20of%20Public%20Catering/Market%20Analysis%20of%20Public%20Catering%20in%20Moscow_ENG.ipynb" target="_blank"><span>Market Analysis of Public Catering Establishments.</span></a>
-                        </div>
-                        <div class="main-item__description">
-                            <p>Identification of insights to use in making a decision on choosing an investment strategy.</p>
-                        </div>
-                        <div class="main-item__subdescription">
-                            <p><span>Stack:</span> Python (Jupyter Notebook)</p>
-                            <p class="main-item__links"><a href="https://github.com/IVKovalev/data_analytics/blob/main/1_Market%20Analysis%20of%20Public%20Catering/Market%20Analysis%20of%20Public%20Catering%20in%20Moscow_ENG.ipynb" target="_blank"><span>Project</span></a><span>|</span><a href="https://github.com/IVKovalev/data_analytics/blob/main/1_Market%20Analysis%20of%20Public%20Catering/README.md" target="_blank""><span>Short description</span></a> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="content__main-item project">
-                    <a data-fslightbox href="assets/img/project2.png">
-                        <img src="assets/img/project2.png" alt="project2">
-                    </a>
-                    <div>
-                        <div class="main-item__title">
-                            <a href="https://github.com/IVKovalev/data_analytics/blob/main/2_Event%20Analysis%20and%20A-A-B%20Testing/Event%20Analysis%20and%20A-A-B%20Testing_ENG.ipynb" target="_blank"><span>Event Analysis and A/A/B Testing.</span></a>
-                        </div>
-                        <div class="main-item__description">
-                            <p>Building and analyzing a sales funnel, studying the results of an A/A/B experiment.</p>
-                        </div>
-                        <div class="main-item__subdescription">
-                            <p><span>Stack:</span> Python (Jupyter Notebook)</p>
-                            <p class="main-item__links"><a href="https://github.com/IVKovalev/data_analytics/blob/main/2_Event%20Analysis%20and%20A-A-B%20Testing/Event%20Analysis%20and%20A-A-B%20Testing_ENG.ipynb" target="_blank"><span>Project</span></a><span>|</span><a href="https://github.com/IVKovalev/data_analytics/blob/main/2_Event%20Analysis%20and%20A-A-B%20Testing/README.md" target="_blank""><span>Short description</span></a> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="content__main-item project">
-                    <a data-fslightbox href="assets/img/project3.png">
-                        <img src="assets/img/project3.png" alt="project3">
-                    </a>
-                    <div>
-                        <div class="main-item__title">
-                            <a href="https://github.com/IVKovalev/data_analytics/blob/main/3_Market%20Analysis%20of%20Video%20Games/Analysis%20of%20the%20computer%20games%20market%20ENG.ipynb" target="_blank"><span>Market Analysis of Video Games</span></a>
-                        </div>
-                        <div class="main-item__description">
-                            <p>Identification of patterns that determine the success of the game for planning an advertising campaign.</p>
-                        </div>
-                        <div class="main-item__subdescription">
-                            <p><span>Stack:</span> Python (Jupyter Notebook)</p>
-                            <p class="main-item__links"><a href="https://github.com/IVKovalev/data_analytics/blob/main/3_Market%20Analysis%20of%20Video%20Games/Analysis%20of%20the%20computer%20games%20market%20ENG.ipynb" target="_blank"><span>Project</span></a><span>|</span><a href="https://github.com/IVKovalev/data_analytics/blob/main/3_Market%20Analysis%20of%20Video%20Games/README.md" target="_blank""><span>Short description</span></a> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="content__main-item project">
-                    <a data-fslightbox href="assets/img/project4.png">
-                        <img src="assets/img/project4.png" alt="project4">
-                    </a>
-                    <div>
-                        <div class="main-item__title">
-                            <a href="https://github.com/IVKovalev/data_analytics/blob/main/4_Business%20Performance%20Analysis/Business%20Performance%20Analysis_ENG.ipynb" target="_blank"><span>Business Performance Analysis.</span></a>
-                        </div>
-                        <div class="main-item__description">
-                            <p>Analysis of the economic efficiency of user acquisition channels for the app.</p>
-                        </div>
-                        <div class="main-item__subdescription">
-                            <p><span>Stack:</span> Python (Jupyter Notebook)</p>
-                            <p class="main-item__links"><a href="https://github.com/IVKovalev/data_analytics/blob/main/4_Business%20Performance%20Analysis/Business%20Performance%20Analysis_ENG.ipynb" target="_blank"><span>Project</span></a><span>|</span><a href="https://github.com/IVKovalev/data_analytics/blob/main/4_Business%20Performance%20Analysis/README.md" target="_blank""><span>Short description</span></a> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="content__main-item project">
-                    <a data-fslightbox href="assets/img/project5.png">
-                        <img src="assets/img/project5.png" alt="project5">
-                    </a>
-                    <div>
-                        <div class="main-item__title">
-                            <a href="https://github.com/IVKovalev/data_analytics/blob/main/5_Hypothesis%20Prioritization%20and%20Testing/Business%20Decision-Making_RUS.ipynb" target="_blank"><span>Business Decision-Making: Hypothesis Prioritization and Testing.</span></a>
-                        </div>
-                        <div class="main-item__description">
-                            <p>Prioritization and analysis of hypotheses for increasing revenue in an online store. Conducting A/B testing.</p>
-                        </div>
-                        <div class="main-item__subdescription">
-                            <p><span>Stack:</span> Python (Jupyter Notebook)</p>
-                            <p class="main-item__links"><a href="https://github.com/IVKovalev/data_analytics/blob/main/5_Hypothesis%20Prioritization%20and%20Testing/Business%20Decision-Making_RUS.ipynb" target="_blank"><span>Project</span></a><span>|</span><a href="https://github.com/IVKovalev/data_analytics/blob/main/5_Hypothesis%20Prioritization%20and%20Testing/README.md" target="_blank""><span>Short description</span></a> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="content__main-item project">
-                    <a data-fslightbox href="assets/img/project6.png">
-                        <img src="assets/img/project6.png" alt="project6">
-                    </a>
-                    <div>
-                        <div class="main-item__title">
-                            <a href="https://github.com/IVKovalev/data_analytics/blob/main/6_Real%20Estate%20Market%20Dependencies%20Analysis/real_estate_market_dependencies.ipynb" target="_blank"><span>Real Estate Market Dependencies Analysis</span></a>
-                        </div>
-                        <div class="main-item__description">
-                            <p>Identifying dependencies and factors influencing pricing in the real estate market.</p>
-                        </div>
-                        <div class="main-item__subdescription">
-                            <p><span>Stack:</span> Python (Jupyter Notebook)</p>
-                            <p class="main-item__links"><a href="https://github.com/IVKovalev/data_analytics/blob/main/6_Real%20Estate%20Market%20Dependencies%20Analysis/real_estate_market_dependencies.ipynb" target="_blank"><span>Project</span></a><span>|</span><a href="https://github.com/IVKovalev/data_analytics/blob/main/6_Real%20Estate%20Market%20Dependencies%20Analysis/README.md" target="_blank""><span>Short description</span></a> </p>
-                        </div>
-                    </div>
-                </div>
-                <h2 class="content__subheader">Machine Learning</h2>
-                <div class="content__main-item">
-                    <div class="main-item__description">
-                        <p>This section presents examples of machine learning projects I have completed. The projects involve classification methods, regression, and neural networks. Additionally, all projects include data preprocessing and feature engineering.</p>
-                    </div>
-                </div>
-                <div class="content__main-item project">
-                    <a data-fslightbox href="assets/img/mlproject1.png">
-                        <img src="assets/img/mlproject1.png" alt="mlproject1">
-                    </a>
-                    <div>
-                        <div class="main-item__title">
-                            <a href="https://github.com/IVKovalev/machine_learning/blob/main/1_Musical%20Preferences/Musical%20preferences_ENG.ipynb" target="_blank"><span>Musical preferences.</span></a>
-                        </div>
-                        <div class="main-item__description">
-                            <p>Creating a model that predicts the user's musical preferences based on the history of listening to songs.</p>
-                        </div>
-                        <div class="main-item__subdescription">
-                            <p><span>Stack:</span> Python (Jupyter Notebook)</p>
-                            <p class="main-item__links"><a href="https://github.com/IVKovalev/machine_learning/blob/main/1_Musical%20Preferences/Musical%20preferences_ENG.ipynb" target="_blank"><span>Project</span></a><span>|</span><a href="https://github.com/IVKovalev/machine_learning/blob/main/1_Musical%20Preferences/README.md" target="_blank""><span>Short description</span></a> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="content__main-item project">
-                    <a data-fslightbox href="assets/img/mlproject2.png">
-                        <img src="assets/img/mlproject2.png" alt="mlproject2">
-                    </a>
-                    <div>
-                        <div class="main-item__title">
-                            <a href="https://github.com/IVKovalev/machine_learning/blob/main/2_Avocado%20Price%20Prediction/Avocado%20price%20prediction_ENG.ipynb" target="_blank"><span>Avocado price prediction.</span></a>
-                        </div>
-                        <div class="main-item__description">
-                            <p>Creating a model for predicting avocado prices based on historical data.</p>
-                        </div>
-                        <div class="main-item__subdescription">
-                            <p><span>Stack:</span> Python (Jupyter Notebook)</p>
-                            <p class="main-item__links"><a href="https://github.com/IVKovalev/machine_learning/blob/main/2_Avocado%20Price%20Prediction/Avocado%20price%20prediction_ENG.ipynb" target="_blank"><span>Project</span></a><span>|</span><a href="https://github.com/IVKovalev/machine_learning/blob/main/2_Avocado%20Price%20Prediction/README.md" target="_blank""><span>Short description</span></a> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="content__main-item project">
-                    <a data-fslightbox href="assets/img/mlproject3.png">
-                        <img src="assets/img/mlproject3.png" alt="mlproject3">
-                    </a>
-                    <div>
-                        <div class="main-item__title">
-                            <a href="https://github.com/IVKovalev/machine_learning/blob/main/3_Heart%20Disease%20Classification/Heart%20Disease%20Classification_ENG.ipynb" target="_blank"><span>Heart disease classification.</span></a>
-                        </div>
-                        <div class="main-item__description">
-                            <p>Building a machine learning model for heart disease classification to predict the likelihood of its occurrence.</p>
-                        </div>
-                        <div class="main-item__subdescription">
-                            <p><span>Stack:</span> Python (Jupyter Notebook)</p>
-                            <p class="main-item__links"><a href="https://github.com/IVKovalev/machine_learning/blob/main/3_Heart%20Disease%20Classification/Heart%20Disease%20Classification_ENG.ipynb" target="_blank"><span>Project</span></a><span>|</span><a href="https://github.com/IVKovalev/machine_learning/blob/main/3_Heart%20Disease%20Classification/README.md" target="_blank""><span>Short description</span></a> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="content__main-item project">
-                    <a data-fslightbox href="assets/img/mlproject4.png">
-                        <img src="assets/img/mlproject4.png" alt="mlproject4">
-                    </a>
-                    <div>
-                        <div class="main-item__title">
-                            <a href="https://github.com/IVKovalev/machine_learning/blob/main/4_Pulsar%20Stars%20Classification/Pulsar%20Stars%20Classification_ENG.ipynb" target="_blank"><span>Pulsar stars classification.</span></a>
-                        </div>
-                        <div class="main-item__description">
-                            <p>Development of a machine learning model for the classification of pulsar stars.</p>
-                        </div>
-                        <div class="main-item__subdescription">
-                            <p><span>Stack:</span> Python (Jupyter Notebook)</p>
-                            <p class="main-item__links"><a href="https://github.com/IVKovalev/machine_learning/blob/main/4_Pulsar%20Stars%20Classification/Pulsar%20Stars%20Classification_ENG.ipynb" target="_blank"><span>Project</span></a><span>|</span><a href="https://github.com/IVKovalev/machine_learning/blob/main/4_Pulsar%20Stars%20Classification/README.md" target="_blank""><span>Short description</span></a> </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer">
-            <div>
-                <span>© Ivan Kovalev</span>
-            </div>
-            <div>
-                <nav class="footer__social">
-                    <a href="https://www.linkedin.com/in/kovalev-ivan-profile" target="_blank" class="footer__social-item">
-                        <img src="assets/img/icons/in.svg" alt="LinkedIn">
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=100006548620369" target="_blank" class="footer__social-item">
-                        <img src="assets/img/icons/facebook.svg" alt="Facebook">
-                    </a>
-                    <a href="https://t.me/ivannkovalev" target="_blank" class="footer__social-item">
-                        <img src="assets/img/icons/telegram.svg" alt="Telegram">
-                    </a>
-                    <a href="https://github.com/IVKovalev" target="_blank" class="footer__social-item">
-                        <img src="assets/img/icons/github.svg" alt="github">
-                    </a>
-                </nav>
-            </div>
-        </div>
+ 
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="topbar__tools">
+      <nav class="langswitch" aria-label="Language">
+        <a href="/" aria-current="page">EN</a>
+        <a href="/ru">RU</a>
+      </nav>
+      <button class="themetoggle" id="themeBtn" type="button" aria-label="Toggle theme" title="Toggle theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg></button>
     </div>
-    <script src="assets/scripts/fslightbox.js"></script>
+  </div>
+</header>
+ 
+<div class="wrap">
+  <section class="hero">
+    <a class="hero__avatarlink" data-fslightbox="avatar" href="/assets/img/avatar.png" aria-label="Open photo">
+      <img class="hero__avatar" src="/assets/img/avatar.png" alt="Ivan Kovalev">
+    </a>
+    <div>
+      <p class="hero__eyebrow">Data Analyst</p>
+      <h1 class="hero__name">Hi, I'm Ivan Kovalev</h1>
+      <p class="hero__role">My social media contacts:</p>
+      <nav class="contacts">
+        <a class="contact" href="https://www.linkedin.com/in/kovalev-ivan-profile" target="_blank" rel="noopener"><svg fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g data-name="in linkedin portfolio social media"><path d="M6.5 3A3.5 3.5 0 1 0 10 6.5 3.5 3.5 0 0 0 6.5 3zm0 5A1.5 1.5 0 1 1 8 6.5 1.5 1.5 0 0 1 6.5 8zM9 11H4a1 1 0 0 0 0 2H8V27H5V16a1 1 0 0 0-2 0V28a1 1 0 0 0 1 1H9a1 1 0 0 0 1-1V12A1 1 0 0 0 9 11zM27.34 12.68A5.94 5.94 0 0 0 23 11H22a7.84 7.84 0 0 0-4 .89A1 1 0 0 0 17 11H12a1 1 0 0 0-1 1V28a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V19a2 2 0 0 1 4 0v9a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V17A5.9 5.9 0 0 0 27.34 12.68zM27 27H24V19a4 4 0 0 0-8 0v8H13V13h3v1a1 1 0 0 0 .62.92 1 1 0 0 0 1.09-.21c.95-1 1.7-1.71 4.29-1.71h1a4 4 0 0 1 2.92 1.09A4 4 0 0 1 27 17z"/></g></svg>LinkedIn</a>
+        <a class="contact" href="https://www.facebook.com/profile.php?id=100006548620369" target="_blank" rel="noopener"><svg fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M24,3H8A5,5,0,0,0,3,8V24a5,5,0,0,0,5,5h8a1,1,0,0,0,1-1V20a1,1,0,0,0-1-1H15V17h1a1,1,0,0,0,1-1V12.5A2.5,2.5,0,0,1,19.5,10H22v2H21a2,2,0,0,0-2,2v2a1,1,0,0,0,1,1h1.72l-.5,2H20a1,1,0,0,0-1,1v4a1,1,0,0,0,2,0V21h1a1,1,0,0,0,1-.76l1-4a1,1,0,0,0-.18-.86A1,1,0,0,0,23,15H21V14h2a1,1,0,0,0,1-1V9a1,1,0,0,0-1-1H19.5A4.51,4.51,0,0,0,15,12.5V15H14a1,1,0,0,0-1,1v4a1,1,0,0,0,1,1h1v6H8a3,3,0,0,1-3-3V8A3,3,0,0,1,8,5H24a3,3,0,0,1,3,3V24a3,3,0,0,1-3,3H20a1,1,0,0,0,0,2h4a5,5,0,0,0,5-5V8A5,5,0,0,0,24,3Z" data-name="facebook fb face book"/></svg>Facebook</a>
+        <a class="contact" href="https://t.me/ivannkovalev" target="_blank" rel="noopener"><svg fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M28.59,4.29a2.23,2.23,0,0,0-2.27-.36L3.41,13.1a1.83,1.83,0,0,0,0,3.38l1.48.61a1,1,0,0,0,1.31-.53,1,1,0,0,0-.54-1.31L4.56,14.8l22.51-9a.22.22,0,0,1,.23,0,.24.24,0,0,1,.08.23L23.27,25.21a.4.4,0,0,1-.26.3.39.39,0,0,1-.39-.06l-8-6.24,7.83-7.91a1,1,0,0,0-1.22-1.56L9.75,16.54a1,1,0,1,0,1,1.72l4.83-2.85L13.23,17.8a2,2,0,0,0,.2,3.08l8,6.15a2.4,2.4,0,0,0,1.47.5,2.47,2.47,0,0,0,.83-.15,2.37,2.37,0,0,0,1.52-1.75L29.33,6.47A2.23,2.23,0,0,0,28.59,4.29Z" data-name="telegram social media network chat"/></svg>Telegram</a>
+        <a class="contact" href="https://github.com/IVKovalev" target="_blank" rel="noopener"><svg fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16,3a13,13,0,0,0-3.46,25.53,1,1,0,1,0,.53-1.92,11,11,0,1,1,7-.4,15.85,15.85,0,0,0-.3-3.92A6.27,6.27,0,0,0,24.68,16a6.42,6.42,0,0,0-1.05-3.87,7.09,7.09,0,0,0-.4-3.36,1,1,0,0,0-1.1-.67,8,8,0,0,0-3.37,1.28A11.35,11.35,0,0,0,16,9a13.09,13.09,0,0,0-3,.43A5.74,5.74,0,0,0,9.62,8.25a1,1,0,0,0-1,.66,7.06,7.06,0,0,0-.37,3.19A7.15,7.15,0,0,0,7.2,16a6.66,6.66,0,0,0,5,6.28,7.43,7.43,0,0,0-.15.79c-1,.06-1.58-.55-2.32-1.48a3.45,3.45,0,0,0-1.94-1.53,1,1,0,0,0-1.15.76A1,1,0,0,0,7.35,22c.16,0,.55.52.77.81a4.74,4.74,0,0,0,3.75,2.25,4.83,4.83,0,0,0,1.3-.18h0a1,1,0,0,0,.29-.14l0,0a.72.72,0,0,0,.18-.21.34.34,0,0,0,.08-.09.85.85,0,0,0,.06-.17,1.52,1.52,0,0,0,.06-.2v0a4.11,4.11,0,0,1,.46-1.91,1,1,0,0,0-.76-1.65A4.6,4.6,0,0,1,9.2,16a4.84,4.84,0,0,1,.87-3,1,1,0,0,0,.24-.83,5,5,0,0,1,0-1.85,3.59,3.59,0,0,1,1.74.92,1,1,0,0,0,1,.23A12.49,12.49,0,0,1,16,11a9.91,9.91,0,0,1,2.65.43,1,1,0,0,0,1-.18,5,5,0,0,1,2-1,4.11,4.11,0,0,1,0,1.91,1.05,1.05,0,0,0,.32,1A4,4,0,0,1,22.68,16a4.29,4.29,0,0,1-4.41,4.46,1,1,0,0,0-.94.65,1,1,0,0,0,.28,1.11c.59.51.5,4,.47,5.36a1,1,0,0,0,.38.81,1,1,0,0,0,.62.21,1.07,1.07,0,0,0,.25,0A13,13,0,0,0,16,3Z" data-name="github coding dev developer"/></svg>GitHub</a>
+        <a class="contact contact--cv" href="/cv.pdf" target="_blank" rel="noopener"><svg fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>CV</a>
+      </nav>
+    </div>
+  </section>
+ 
+  <div class="prose lede">
+    <p>I served in the criminal police and worked with distressed assets in banks, and my passion has always been understanding the nature of things and the dependencies of phenomena on each other. If you like the series “Breaking Bad”, have watched Harry Potter or The Lord of the Rings more than twice, and consider “The Last of Us 2” one of the best games of the decade, we’re on the same wavelength.</p>
+    <p>You can view my <a href="/cv.pdf" target="_blank" rel="noopener">CV</a> or learn more about my professional path on LinkedIn by clicking on the icon above.</p>
+  </div>
+ 
+  <hr class="rule">
+ 
+  <h2 class="section-title">Portfolio</h2>
+ 
+  <div class="kicker">Data analysis</div>
+  <p class="section-intro">This section presents examples of data analysis projects I have completed. The projects are focused on exploratory data analysis, statistical analysis and A/B testing, as well as business performance analysis.</p>
+ 
+  <div class="cards">
+    <article class="card">
+      <a class="card__shotlink" data-fslightbox="portfolio" href="/assets/img/project1.png" aria-label="Open preview: Market Analysis of Public Catering Establishments">
+        <img class="card__shot" src="/assets/img/project1.png" alt="Market Analysis of Public Catering Establishments" loading="lazy">
+      </a>
+      <div class="card__body">
+        <h3 class="card__title"><a href="https://github.com/IVKovalev/data_analytics/blob/main/1_Market%20Analysis%20of%20Public%20Catering/Market%20Analysis%20of%20Public%20Catering%20in%20Moscow_ENG.ipynb" target="_blank" rel="noopener">Market Analysis of Public Catering Establishments</a></h3>
+        <p class="card__desc">Identification of insights to use in making a decision on choosing an investment strategy.</p>
+        <div class="card__meta">
+          <span class="chip">Python</span>
+          <span class="chip">Jupyter Notebook</span>
+          <span class="card__links">
+            <a href="https://github.com/IVKovalev/data_analytics/blob/main/1_Market%20Analysis%20of%20Public%20Catering/Market%20Analysis%20of%20Public%20Catering%20in%20Moscow_ENG.ipynb" target="_blank" rel="noopener">Project&nbsp;↗</a>
+            <a class="secondary" href="https://github.com/IVKovalev/data_analytics/blob/main/1_Market%20Analysis%20of%20Public%20Catering/README.md" target="_blank" rel="noopener">Description</a>
+          </span>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="card__shotlink" data-fslightbox="portfolio" href="/assets/img/project2.png" aria-label="Open preview: Event Analysis and A/A/B Testing">
+        <img class="card__shot" src="/assets/img/project2.png" alt="Event Analysis and A/A/B Testing" loading="lazy">
+      </a>
+      <div class="card__body">
+        <h3 class="card__title"><a href="https://github.com/IVKovalev/data_analytics/blob/main/2_Event%20Analysis%20and%20A-A-B%20Testing/Event%20Analysis%20and%20A-A-B%20Testing_ENG.ipynb" target="_blank" rel="noopener">Event Analysis and A/A/B Testing</a></h3>
+        <p class="card__desc">Building and analyzing a sales funnel, studying the results of an A/A/B experiment.</p>
+        <div class="card__meta">
+          <span class="chip">Python</span>
+          <span class="chip">Jupyter Notebook</span>
+          <span class="card__links">
+            <a href="https://github.com/IVKovalev/data_analytics/blob/main/2_Event%20Analysis%20and%20A-A-B%20Testing/Event%20Analysis%20and%20A-A-B%20Testing_ENG.ipynb" target="_blank" rel="noopener">Project&nbsp;↗</a>
+            <a class="secondary" href="https://github.com/IVKovalev/data_analytics/blob/main/2_Event%20Analysis%20and%20A-A-B%20Testing/README.md" target="_blank" rel="noopener">Description</a>
+          </span>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="card__shotlink" data-fslightbox="portfolio" href="/assets/img/project3.png" aria-label="Open preview: Market Analysis of Video Games">
+        <img class="card__shot" src="/assets/img/project3.png" alt="Market Analysis of Video Games" loading="lazy">
+      </a>
+      <div class="card__body">
+        <h3 class="card__title"><a href="https://github.com/IVKovalev/data_analytics/blob/main/3_Market%20Analysis%20of%20Video%20Games/Analysis%20of%20the%20computer%20games%20market%20ENG.ipynb" target="_blank" rel="noopener">Market Analysis of Video Games</a></h3>
+        <p class="card__desc">Identification of patterns that determine the success of the game for planning an advertising campaign.</p>
+        <div class="card__meta">
+          <span class="chip">Python</span>
+          <span class="chip">Jupyter Notebook</span>
+          <span class="card__links">
+            <a href="https://github.com/IVKovalev/data_analytics/blob/main/3_Market%20Analysis%20of%20Video%20Games/Analysis%20of%20the%20computer%20games%20market%20ENG.ipynb" target="_blank" rel="noopener">Project&nbsp;↗</a>
+            <a class="secondary" href="https://github.com/IVKovalev/data_analytics/blob/main/3_Market%20Analysis%20of%20Video%20Games/README.md" target="_blank" rel="noopener">Description</a>
+          </span>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="card__shotlink" data-fslightbox="portfolio" href="/assets/img/project4.png" aria-label="Open preview: Business Performance Analysis">
+        <img class="card__shot" src="/assets/img/project4.png" alt="Business Performance Analysis" loading="lazy">
+      </a>
+      <div class="card__body">
+        <h3 class="card__title"><a href="https://github.com/IVKovalev/data_analytics/blob/main/4_Business%20Performance%20Analysis/Business%20Performance%20Analysis_ENG.ipynb" target="_blank" rel="noopener">Business Performance Analysis</a></h3>
+        <p class="card__desc">Analysis of the economic efficiency of user acquisition channels for the app.</p>
+        <div class="card__meta">
+          <span class="chip">Python</span>
+          <span class="chip">Jupyter Notebook</span>
+          <span class="card__links">
+            <a href="https://github.com/IVKovalev/data_analytics/blob/main/4_Business%20Performance%20Analysis/Business%20Performance%20Analysis_ENG.ipynb" target="_blank" rel="noopener">Project&nbsp;↗</a>
+            <a class="secondary" href="https://github.com/IVKovalev/data_analytics/blob/main/4_Business%20Performance%20Analysis/README.md" target="_blank" rel="noopener">Description</a>
+          </span>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="card__shotlink" data-fslightbox="portfolio" href="/assets/img/project5.png" aria-label="Open preview: Business Decision-Making: Hypothesis Prioritization and Testing">
+        <img class="card__shot" src="/assets/img/project5.png" alt="Business Decision-Making: Hypothesis Prioritization and Testing" loading="lazy">
+      </a>
+      <div class="card__body">
+        <h3 class="card__title"><a href="https://github.com/IVKovalev/data_analytics/blob/main/5_Hypothesis%20Prioritization%20and%20Testing/Business%20Decision-Making_RUS.ipynb" target="_blank" rel="noopener">Business Decision-Making: Hypothesis Prioritization and Testing</a></h3>
+        <p class="card__desc">Prioritization and analysis of hypotheses for increasing revenue in an online store. Conducting A/B testing.</p>
+        <div class="card__meta">
+          <span class="chip">Python</span>
+          <span class="chip">Jupyter Notebook</span>
+          <span class="card__links">
+            <a href="https://github.com/IVKovalev/data_analytics/blob/main/5_Hypothesis%20Prioritization%20and%20Testing/Business%20Decision-Making_RUS.ipynb" target="_blank" rel="noopener">Project&nbsp;↗</a>
+            <a class="secondary" href="https://github.com/IVKovalev/data_analytics/blob/main/5_Hypothesis%20Prioritization%20and%20Testing/README.md" target="_blank" rel="noopener">Description</a>
+          </span>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="card__shotlink" data-fslightbox="portfolio" href="/assets/img/project6.png" aria-label="Open preview: Real Estate Market Dependencies Analysis">
+        <img class="card__shot" src="/assets/img/project6.png" alt="Real Estate Market Dependencies Analysis" loading="lazy">
+      </a>
+      <div class="card__body">
+        <h3 class="card__title"><a href="https://github.com/IVKovalev/data_analytics/blob/main/6_Real%20Estate%20Market%20Dependencies%20Analysis/real_estate_market_dependencies.ipynb" target="_blank" rel="noopener">Real Estate Market Dependencies Analysis</a></h3>
+        <p class="card__desc">Identifying dependencies and factors influencing pricing in the real estate market.</p>
+        <div class="card__meta">
+          <span class="chip">Python</span>
+          <span class="chip">Jupyter Notebook</span>
+          <span class="card__links">
+            <a href="https://github.com/IVKovalev/data_analytics/blob/main/6_Real%20Estate%20Market%20Dependencies%20Analysis/real_estate_market_dependencies.ipynb" target="_blank" rel="noopener">Project&nbsp;↗</a>
+            <a class="secondary" href="https://github.com/IVKovalev/data_analytics/blob/main/6_Real%20Estate%20Market%20Dependencies%20Analysis/README.md" target="_blank" rel="noopener">Description</a>
+          </span>
+        </div>
+      </div>
+    </article>
+  </div>
+ 
+  <div class="kicker">Machine Learning</div>
+  <p class="section-intro">This section presents examples of machine learning projects I have completed. The projects involve classification methods, regression, and neural networks. Additionally, all projects include data preprocessing and feature engineering.</p>
+ 
+  <div class="cards">
+    <article class="card">
+      <a class="card__shotlink" data-fslightbox="portfolio" href="/assets/img/mlproject1.png" aria-label="Open preview: Musical preferences">
+        <img class="card__shot" src="/assets/img/mlproject1.png" alt="Musical preferences" loading="lazy">
+      </a>
+      <div class="card__body">
+        <h3 class="card__title"><a href="https://github.com/IVKovalev/machine_learning/blob/main/1_Musical%20Preferences/Musical%20preferences_ENG.ipynb" target="_blank" rel="noopener">Musical preferences</a></h3>
+        <p class="card__desc">Creating a model that predicts the user&#x27;s musical preferences based on the history of listening to songs.</p>
+        <div class="card__meta">
+          <span class="chip">Python</span>
+          <span class="chip">Jupyter Notebook</span>
+          <span class="card__links">
+            <a href="https://github.com/IVKovalev/machine_learning/blob/main/1_Musical%20Preferences/Musical%20preferences_ENG.ipynb" target="_blank" rel="noopener">Project&nbsp;↗</a>
+            <a class="secondary" href="https://github.com/IVKovalev/machine_learning/blob/main/1_Musical%20Preferences/README.md" target="_blank" rel="noopener">Description</a>
+          </span>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="card__shotlink" data-fslightbox="portfolio" href="/assets/img/mlproject2.png" aria-label="Open preview: Avocado price prediction">
+        <img class="card__shot" src="/assets/img/mlproject2.png" alt="Avocado price prediction" loading="lazy">
+      </a>
+      <div class="card__body">
+        <h3 class="card__title"><a href="https://github.com/IVKovalev/machine_learning/blob/main/2_Avocado%20Price%20Prediction/Avocado%20price%20prediction_ENG.ipynb" target="_blank" rel="noopener">Avocado price prediction</a></h3>
+        <p class="card__desc">Creating a model for predicting avocado prices based on historical data.</p>
+        <div class="card__meta">
+          <span class="chip">Python</span>
+          <span class="chip">Jupyter Notebook</span>
+          <span class="card__links">
+            <a href="https://github.com/IVKovalev/machine_learning/blob/main/2_Avocado%20Price%20Prediction/Avocado%20price%20prediction_ENG.ipynb" target="_blank" rel="noopener">Project&nbsp;↗</a>
+            <a class="secondary" href="https://github.com/IVKovalev/machine_learning/blob/main/2_Avocado%20Price%20Prediction/README.md" target="_blank" rel="noopener">Description</a>
+          </span>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="card__shotlink" data-fslightbox="portfolio" href="/assets/img/mlproject3.png" aria-label="Open preview: Heart disease classification">
+        <img class="card__shot" src="/assets/img/mlproject3.png" alt="Heart disease classification" loading="lazy">
+      </a>
+      <div class="card__body">
+        <h3 class="card__title"><a href="https://github.com/IVKovalev/machine_learning/blob/main/3_Heart%20Disease%20Classification/Heart%20Disease%20Classification_ENG.ipynb" target="_blank" rel="noopener">Heart disease classification</a></h3>
+        <p class="card__desc">Building a machine learning model for heart disease classification to predict the likelihood of its occurrence.</p>
+        <div class="card__meta">
+          <span class="chip">Python</span>
+          <span class="chip">Jupyter Notebook</span>
+          <span class="card__links">
+            <a href="https://github.com/IVKovalev/machine_learning/blob/main/3_Heart%20Disease%20Classification/Heart%20Disease%20Classification_ENG.ipynb" target="_blank" rel="noopener">Project&nbsp;↗</a>
+            <a class="secondary" href="https://github.com/IVKovalev/machine_learning/blob/main/3_Heart%20Disease%20Classification/README.md" target="_blank" rel="noopener">Description</a>
+          </span>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="card__shotlink" data-fslightbox="portfolio" href="/assets/img/mlproject4.png" aria-label="Open preview: Pulsar stars classification">
+        <img class="card__shot" src="/assets/img/mlproject4.png" alt="Pulsar stars classification" loading="lazy">
+      </a>
+      <div class="card__body">
+        <h3 class="card__title"><a href="https://github.com/IVKovalev/machine_learning/blob/main/4_Pulsar%20Stars%20Classification/Pulsar%20Stars%20Classification_ENG.ipynb" target="_blank" rel="noopener">Pulsar stars classification</a></h3>
+        <p class="card__desc">Development of a machine learning model for the classification of pulsar stars.</p>
+        <div class="card__meta">
+          <span class="chip">Python</span>
+          <span class="chip">Jupyter Notebook</span>
+          <span class="card__links">
+            <a href="https://github.com/IVKovalev/machine_learning/blob/main/4_Pulsar%20Stars%20Classification/Pulsar%20Stars%20Classification_ENG.ipynb" target="_blank" rel="noopener">Project&nbsp;↗</a>
+            <a class="secondary" href="https://github.com/IVKovalev/machine_learning/blob/main/4_Pulsar%20Stars%20Classification/README.md" target="_blank" rel="noopener">Description</a>
+          </span>
+        </div>
+      </div>
+    </article>
+  </div>
+ 
+  <footer class="footer">
+    <span>© Ivan Kovalev</span>
+    <nav class="footer__social">
+      <a href="https://www.linkedin.com/in/kovalev-ivan-profile" target="_blank" rel="noopener" aria-label="LinkedIn"><svg fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g data-name="in linkedin portfolio social media"><path d="M6.5 3A3.5 3.5 0 1 0 10 6.5 3.5 3.5 0 0 0 6.5 3zm0 5A1.5 1.5 0 1 1 8 6.5 1.5 1.5 0 0 1 6.5 8zM9 11H4a1 1 0 0 0 0 2H8V27H5V16a1 1 0 0 0-2 0V28a1 1 0 0 0 1 1H9a1 1 0 0 0 1-1V12A1 1 0 0 0 9 11zM27.34 12.68A5.94 5.94 0 0 0 23 11H22a7.84 7.84 0 0 0-4 .89A1 1 0 0 0 17 11H12a1 1 0 0 0-1 1V28a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V19a2 2 0 0 1 4 0v9a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V17A5.9 5.9 0 0 0 27.34 12.68zM27 27H24V19a4 4 0 0 0-8 0v8H13V13h3v1a1 1 0 0 0 .62.92 1 1 0 0 0 1.09-.21c.95-1 1.7-1.71 4.29-1.71h1a4 4 0 0 1 2.92 1.09A4 4 0 0 1 27 17z"/></g></svg></a>
+      <a href="https://www.facebook.com/profile.php?id=100006548620369" target="_blank" rel="noopener" aria-label="Facebook"><svg fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M24,3H8A5,5,0,0,0,3,8V24a5,5,0,0,0,5,5h8a1,1,0,0,0,1-1V20a1,1,0,0,0-1-1H15V17h1a1,1,0,0,0,1-1V12.5A2.5,2.5,0,0,1,19.5,10H22v2H21a2,2,0,0,0-2,2v2a1,1,0,0,0,1,1h1.72l-.5,2H20a1,1,0,0,0-1,1v4a1,1,0,0,0,2,0V21h1a1,1,0,0,0,1-.76l1-4a1,1,0,0,0-.18-.86A1,1,0,0,0,23,15H21V14h2a1,1,0,0,0,1-1V9a1,1,0,0,0-1-1H19.5A4.51,4.51,0,0,0,15,12.5V15H14a1,1,0,0,0-1,1v4a1,1,0,0,0,1,1h1v6H8a3,3,0,0,1-3-3V8A3,3,0,0,1,8,5H24a3,3,0,0,1,3,3V24a3,3,0,0,1-3,3H20a1,1,0,0,0,0,2h4a5,5,0,0,0,5-5V8A5,5,0,0,0,24,3Z" data-name="facebook fb face book"/></svg></a>
+      <a href="https://t.me/ivannkovalev" target="_blank" rel="noopener" aria-label="Telegram"><svg fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M28.59,4.29a2.23,2.23,0,0,0-2.27-.36L3.41,13.1a1.83,1.83,0,0,0,0,3.38l1.48.61a1,1,0,0,0,1.31-.53,1,1,0,0,0-.54-1.31L4.56,14.8l22.51-9a.22.22,0,0,1,.23,0,.24.24,0,0,1,.08.23L23.27,25.21a.4.4,0,0,1-.26.3.39.39,0,0,1-.39-.06l-8-6.24,7.83-7.91a1,1,0,0,0-1.22-1.56L9.75,16.54a1,1,0,1,0,1,1.72l4.83-2.85L13.23,17.8a2,2,0,0,0,.2,3.08l8,6.15a2.4,2.4,0,0,0,1.47.5,2.47,2.47,0,0,0,.83-.15,2.37,2.37,0,0,0,1.52-1.75L29.33,6.47A2.23,2.23,0,0,0,28.59,4.29Z" data-name="telegram social media network chat"/></svg></a>
+      <a href="https://github.com/IVKovalev" target="_blank" rel="noopener" aria-label="GitHub"><svg fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16,3a13,13,0,0,0-3.46,25.53,1,1,0,1,0,.53-1.92,11,11,0,1,1,7-.4,15.85,15.85,0,0,0-.3-3.92A6.27,6.27,0,0,0,24.68,16a6.42,6.42,0,0,0-1.05-3.87,7.09,7.09,0,0,0-.4-3.36,1,1,0,0,0-1.1-.67,8,8,0,0,0-3.37,1.28A11.35,11.35,0,0,0,16,9a13.09,13.09,0,0,0-3,.43A5.74,5.74,0,0,0,9.62,8.25a1,1,0,0,0-1,.66,7.06,7.06,0,0,0-.37,3.19A7.15,7.15,0,0,0,7.2,16a6.66,6.66,0,0,0,5,6.28,7.43,7.43,0,0,0-.15.79c-1,.06-1.58-.55-2.32-1.48a3.45,3.45,0,0,0-1.94-1.53,1,1,0,0,0-1.15.76A1,1,0,0,0,7.35,22c.16,0,.55.52.77.81a4.74,4.74,0,0,0,3.75,2.25,4.83,4.83,0,0,0,1.3-.18h0a1,1,0,0,0,.29-.14l0,0a.72.72,0,0,0,.18-.21.34.34,0,0,0,.08-.09.85.85,0,0,0,.06-.17,1.52,1.52,0,0,0,.06-.2v0a4.11,4.11,0,0,1,.46-1.91,1,1,0,0,0-.76-1.65A4.6,4.6,0,0,1,9.2,16a4.84,4.84,0,0,1,.87-3,1,1,0,0,0,.24-.83,5,5,0,0,1,0-1.85,3.59,3.59,0,0,1,1.74.92,1,1,0,0,0,1,.23A12.49,12.49,0,0,1,16,11a9.91,9.91,0,0,1,2.65.43,1,1,0,0,0,1-.18,5,5,0,0,1,2-1,4.11,4.11,0,0,1,0,1.91,1.05,1.05,0,0,0,.32,1A4,4,0,0,1,22.68,16a4.29,4.29,0,0,1-4.41,4.46,1,1,0,0,0-.94.65,1,1,0,0,0,.28,1.11c.59.51.5,4,.47,5.36a1,1,0,0,0,.38.81,1,1,0,0,0,.62.21,1.07,1.07,0,0,0,.25,0A13,13,0,0,0,16,3Z" data-name="github coding dev developer"/></svg></a>
+    </nav>
+  </footer>
+</div>
+ 
+<script src="/assets/scripts/fslightbox.js"></script>
+ 
+<script>
+(function () {
+  var btn = document.getElementById('themeBtn');
+  var root = document.documentElement;
+  btn.addEventListener('click', function () {
+    var isDark = getComputedStyle(root).getPropertyValue('--bg').trim() === '#0d1214';
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  });
+})();
+</script>
+ 
 </body>
 </html>
